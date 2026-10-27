@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fleet_vehicle_user,fleet.ops.vehicle user,model_fleet_ops_vehicle,group_fleet_user,1,1,1,0
+access_fleet_driver_user,fleet.ops.driver user,model_fleet_ops_driver,group_fleet_user,1,1,1,0
+access_fleet_service_user,fleet.ops.service user,model_fleet_ops_service,group_fleet_user,1,1,1,0
+access_fleet_vehicle_manager,fleet.ops.vehicle manager,model_fleet_ops_vehicle,group_fleet_manager,1,1,1,1
+access_fleet_driver_manager,fleet.ops.driver manager,model_fleet_ops_driver,group_fleet_manager,1,1,1,1
+access_fleet_service_manager,fleet.ops.service manager,model_fleet_ops_service,group_fleet_manager,1,1,1,1

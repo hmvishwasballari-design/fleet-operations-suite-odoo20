@@ -1,0 +1,71 @@
+<odoo>
+    <record id="view_fleet_vehicle_list" model="ir.ui.view">
+        <field name="name">fleet.ops.vehicle.list</field>
+        <field name="model">fleet.ops.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Vehicles">
+                <field name="name"/>
+                <field name="registration_number"/>
+                <field name="make"/>
+                <field name="model_name"/>
+                <field name="vehicle_type"/>
+                <field name="driver_id"/>
+                <field name="odometer_km"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_fleet_vehicle_form" model="ir.ui.view">
+        <field name="name">fleet.ops.vehicle.form</field>
+        <field name="model">fleet.ops.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle">
+                <header>
+                    <button name="action_mark_available" type="object" string="Mark Available" class="btn-primary" invisible="state == 'retired'"/>
+                    <button name="action_mark_maintenance" type="object" string="Send to Maintenance" invisible="state in ('maintenance', 'retired')"/>
+                    <button name="action_retire" type="object" string="Retire" invisible="state == 'retired'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="available,assigned,maintenance,retired"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" placeholder="Vehicle name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="registration_number"/>
+                            <field name="vin"/>
+                            <field name="make"/>
+                            <field name="model_name"/>
+                            <field name="year"/>
+                        </group>
+                        <group>
+                            <field name="vehicle_type"/>
+                            <field name="driver_id"/>
+                            <field name="odometer_km"/>
+                            <field name="purchase_date"/>
+                            <field name="insurance_expiry"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Service History"><field name="service_ids"><list><field name="name"/><field name="service_date"/><field name="service_type"/><field name="cost"/><field name="state"/></list></field></page>
+                        <page string="Notes"><field name="notes"/></page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_fleet_vehicle_search" model="ir.ui.view">
+        <field name="name">fleet.ops.vehicle.search</field>
+        <field name="model">fleet.ops.vehicle</field>
+        <field name="arch" type="xml">
+            <search string="Search Vehicles">
+                <field name="name"/><field name="registration_number"/><field name="driver_id"/>
+                <filter name="available" string="Available" domain="[('state','=','available')]"/>
+                <filter name="maintenance" string="In Maintenance" domain="[('state','=','maintenance')]"/>
+                <group expand="0" string="Group By"><filter name="group_state" string="Status" context="{'group_by':'state'}"/><filter name="group_type" string="Type" context="{'group_by':'vehicle_type'}"/></group>
+            </search>
+        </field>
+    </record>
+    <record id="action_fleet_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicles</field><field name="res_model">fleet.ops.vehicle</field><field name="view_mode">list,form</field><field name="search_view_id" ref="view_fleet_vehicle_search"/>
+    </record>
+</odoo>

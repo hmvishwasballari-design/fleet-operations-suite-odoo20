@@ -1,0 +1,20 @@
+{
+    "name": "Fleet Operations Suite",
+    "version": "20.0.1.0.0",
+    "summary": "Manage fleet vehicles, drivers, and maintenance records",
+    "category": "Operations/Fleet",
+    "author": "Vishwas",
+    "license": "LGPL-3",
+    "depends": ["base", "mail"],
+    "data": [
+        "security/fleet_security.xml",
+        "security/ir.model.access.csv",
+        "data/fleet_sequence.xml",
+        "views/fleet_vehicle_views.xml",
+        "views/fleet_driver_views.xml",
+        "views/fleet_service_views.xml",
+        "views/fleet_menus.xml",
+    ],
+    "application": True,
+    "installable": True,
+}

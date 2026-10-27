@@ -1,0 +1,11 @@
+<odoo>
+    <record id="view_fleet_service_list" model="ir.ui.view">
+        <field name="name">fleet.ops.service.list</field><field name="model">fleet.ops.service</field>
+        <field name="arch" type="xml"><list string="Service Records"><field name="name"/><field name="vehicle_id"/><field name="service_date"/><field name="service_type"/><field name="odometer_km"/><field name="cost"/><field name="next_service_date"/><field name="state" widget="badge"/></list></field>
+    </record>
+    <record id="view_fleet_service_form" model="ir.ui.view">
+        <field name="name">fleet.ops.service.form</field><field name="model">fleet.ops.service</field>
+        <field name="arch" type="xml"><form string="Service Record"><header><button name="action_start" type="object" string="Start Service" invisible="state != 'planned'"/><button name="action_complete" type="object" string="Complete" class="btn-primary" invisible="state not in ('planned','in_progress')"/><field name="state" widget="statusbar" statusbar_visible="planned,in_progress,done,cancelled"/></header><sheet><div class="oe_title"><h1><field name="name"/></h1></div><group><group><field name="vehicle_id"/><field name="service_date"/><field name="service_type"/><field name="odometer_km"/></group><group><field name="vendor"/><field name="cost"/><field name="currency_id" invisible="1"/><field name="next_service_date"/></group></group><field name="description"/></sheet><chatter/></form></field>
+    </record>
+    <record id="action_fleet_service" model="ir.actions.act_window"><field name="name">Service Records</field><field name="res_model">fleet.ops.service</field><field name="view_mode">list,form</field></record>
+</odoo>

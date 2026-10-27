@@ -1,0 +1,8 @@
+<odoo>
+    <record id="seq_fleet_service" model="ir.sequence">
+        <field name="name">Fleet Service</field>
+        <field name="code">fleet.ops.service</field>
+        <field name="prefix">FS/</field>
+        <field name="padding">5</field>
+    </record>
+</odoo>

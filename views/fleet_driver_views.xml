@@ -1,0 +1,11 @@
+<odoo>
+    <record id="view_fleet_driver_list" model="ir.ui.view">
+        <field name="name">fleet.ops.driver.list</field><field name="model">fleet.ops.driver</field>
+        <field name="arch" type="xml"><list string="Drivers"><field name="name"/><field name="employee_code"/><field name="phone"/><field name="license_number"/><field name="license_expiry"/><field name="active"/></list></field>
+    </record>
+    <record id="view_fleet_driver_form" model="ir.ui.view">
+        <field name="name">fleet.ops.driver.form</field><field name="model">fleet.ops.driver</field>
+        <field name="arch" type="xml"><form string="Driver"><sheet><div class="oe_title"><h1><field name="name"/></h1></div><group><group><field name="employee_code"/><field name="phone"/><field name="email"/></group><group><field name="license_number"/><field name="license_expiry"/><field name="active"/></group></group><field name="vehicle_ids"><list><field name="name"/><field name="registration_number"/><field name="state"/></list></field><group><field name="notes"/></group></sheet><chatter/></form></field>
+    </record>
+    <record id="action_fleet_driver" model="ir.actions.act_window"><field name="name">Drivers</field><field name="res_model">fleet.ops.driver</field><field name="view_mode">list,form</field></record>
+</odoo>
